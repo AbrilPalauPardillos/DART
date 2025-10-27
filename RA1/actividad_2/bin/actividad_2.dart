@@ -96,7 +96,7 @@ bool validarNumeroDeModulos(Alumno alumno) {
       if (!yaTiene) alumno.modulosCursados.add(modulo);
       if (alumno.modulosCursados.length >= 4) break;
     }
-    print('📘 Lista actualizada de módulos:');
+    print('Lista actualizada de módulos:');
     for (var m in alumno.modulosCursados) {
       print(m.nombreModulo);
     }
