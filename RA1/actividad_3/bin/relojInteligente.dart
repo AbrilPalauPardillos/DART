@@ -28,19 +28,20 @@ class RelojInteligente extends Dispositivo {
 
   void mostrarNotificaciones() {
     print(
-      'Mostrando notificaciones en pantalla de $tamanioPantalla pulgadas...',
+      '📲 Mostrando notificaciones en pantalla de $tamanioPantalla pulgadas...',
     );
 
-    //SIMULACION DE NOTIFICACIONES
+    // LISTA DE NOTIFICACIONES SIMULADAS
     List<String> notificaciones = [
-      'Nuevo correo de soporte@empresa.com',
-      'Recordatorio: Reunión a las 18:00',
-      'Mensaje de Ana: "¿Vamos al cine?"',
-      'Actualización disponible para el sistema',
+      'Email nuevo de claseDAM@centro.edu',
+      'Evento: Examen de Programación mañana a las 9:00',
+      'Mensaje de Juan: "¿Has hecho el ejercicio 3?"',
+      'Actualización disponible del sistema',
     ];
 
-    for (var nota in notificaciones) {
-      print(nota);
+    // MOSTRAR CADA NOTIFICACIÓN
+    for (String noti in notificaciones) {
+      print(noti);
     }
 
     print('Fin de las notificaciones.');

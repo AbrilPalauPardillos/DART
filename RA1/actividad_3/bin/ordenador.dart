@@ -28,20 +28,27 @@ class Ordenador extends Dispositivo {
   }
 
   void compilarCodigo() {
-    print('Iniciando compilación de código...');
+    print(' código...');
 
+    // COMPROBAR SI HAY SUFICIENTE MEMORIA RAM
     if (memoriaRAM < 4) {
-      print('Error: Memoria RAM insuficiente para compilar el código.');
+      print('Error: Memoria RAM insuficiente para compilar.');
       return;
     }
 
-    if (!['Windows', 'Linux', 'macOS'].contains(sistemaOperativo)) {
-      print('Error: Sistema operativo no compatible para compilación.');
+    // VERIFICAR SI SISTEMA OPERATIVO ES COMPATIBLE
+    if (sistemaOperativo != 'Windows' &&
+        sistemaOperativo != 'Linux' &&
+        sistemaOperativo != 'macOS') {
+      print('Error: Sistema operativo no compatible.');
       return;
     }
 
-    print('Usando procesador $procesador con $memoriaRAM GB de RAM...');
-    print('Compilando en $sistemaOperativo...');
-    print('Compilación exitosa. Código listo para ejecutarse.');
+    // SIMULAR EL PROCESO DE COMPILACIÓN
+    print(
+      'Compilación iniciada en $sistemaOperativo con procesador $procesador...',
+    );
+    print('Compilando...');
+    print('Compilación finalizada con éxito.');
   }
 }

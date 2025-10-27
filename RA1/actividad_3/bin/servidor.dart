@@ -26,18 +26,18 @@ class Servidor extends Dispositivo {
   }
 
   void actualizarLibrerias() {
-    print('Iniciando actualización de librerías en el servidor...');
+    print('Actualizando librerías del servidor...');
 
+    // COMPROBAR SI LA RED ES ADECUADA
     if (tipoRed.toLowerCase().contains('ethernet') ||
         tipoRed.toLowerCase().contains('fibra')) {
-      print('Conexión de red estable detectada: $tipoRed');
-      print('Verificando versiones actuales de librerías...');
-      print('Descargando actualizaciones...');
-      print('Instalando nuevas versiones...');
-      print('Actualización completada exitosamente.');
+      print('Red estable detectada: $tipoRed');
+      print('Descargando librerías...');
+      print('Instalando actualizaciones...');
+      print('Librerías actualizadas correctamente.');
     } else {
       print(
-        'Advertencia: Tipo de red $tipoRed no garantiza estabilidad. Se recomienda revisar la conexión antes de actualizar.',
+        'Red $tipoRed no recomendada para actualizar. Verifica la conexión.',
       );
     }
   }

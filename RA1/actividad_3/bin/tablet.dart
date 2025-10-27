@@ -27,18 +27,15 @@ class Tablet extends Dispositivo {
   }
 
   void modoNoche() {
-    print('Activando modo noche...');
+    print('🌙 Activando modo noche...');
 
+    // VERIFICAR SISTEMA OPERATIVO SOPORTA MODO NOCHE
     if (sistemaOperativo.toLowerCase().contains('android') ||
         sistemaOperativo.toLowerCase().contains('ios')) {
       print('Modo noche activado en $sistemaOperativo.');
-      print(
-        'Brillo reducido y colores cálidos aplicados para proteger la vista.',
-      );
+      print('Brillo reducido y colores cálidos aplicados.');
     } else {
-      print(
-        'Modo noche no disponible para el sistema operativo $sistemaOperativo.',
-      );
+      print('Modo noche no disponible en $sistemaOperativo.');
     }
   }
 }
