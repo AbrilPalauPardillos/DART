@@ -25,4 +25,20 @@ class Tablet extends Dispositivo {
     final lteStr = camara ? 'Sí' : 'No';
     return '${super.toString()}, Tamaño Pantalla: ${tamanioPantalla} pulgadas, LTE: $lteStr, Sistema Operativo: $sistemaOperativo';
   }
+
+  void modoNoche() {
+    print('Activando modo noche...');
+
+    if (sistemaOperativo.toLowerCase().contains('android') ||
+        sistemaOperativo.toLowerCase().contains('ios')) {
+      print('Modo noche activado en $sistemaOperativo.');
+      print(
+        'Brillo reducido y colores cálidos aplicados para proteger la vista.',
+      );
+    } else {
+      print(
+        'Modo noche no disponible para el sistema operativo $sistemaOperativo.',
+      );
+    }
+  }
 }
