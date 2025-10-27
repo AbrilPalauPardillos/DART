@@ -26,4 +26,22 @@ class Ordenador extends Dispositivo {
   String toString() {
     return '${super.toString()}, Memoria RAM: ${memoriaRAM}GB, Procesador: $procesador, Sistema Operativo: $sistemaOperativo, Tamaño Disco Duro: ${tamanioDiscoDuro}GB';
   }
+
+  void compilarCodigo() {
+    print('Iniciando compilación de código...');
+
+    if (memoriaRAM < 4) {
+      print('Error: Memoria RAM insuficiente para compilar el código.');
+      return;
+    }
+
+    if (!['Windows', 'Linux', 'macOS'].contains(sistemaOperativo)) {
+      print('Error: Sistema operativo no compatible para compilación.');
+      return;
+    }
+
+    print('Usando procesador $procesador con $memoriaRAM GB de RAM...');
+    print('Compilando en $sistemaOperativo...');
+    print('Compilación exitosa. Código listo para ejecutarse.');
+  }
 }
