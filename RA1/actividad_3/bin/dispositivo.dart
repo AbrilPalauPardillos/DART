@@ -1,4 +1,4 @@
-class Dispositivo {
+abstract class Dispositivo {
   int id;
   String marca;
   String modelo;
@@ -13,6 +13,6 @@ class Dispositivo {
 
   @override
   String toString() {
-    return 'Dispositivo ID: $id, Marca: $marca, Modelo: $modelo, Año de Fabricación: $anioFabricacion';
+    return 'ID: $id | Marca: $marca | Modelo: $modelo | Año: $anioFabricacion';
   }
 }

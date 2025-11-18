@@ -1,9 +1,10 @@
 import 'dispositivo.dart';
+import 'mixin/Sincronizacion.dart';
 
-class Servidor extends Dispositivo {
+class Servidor extends Dispositivo with SincronizacionNube {
   int numeroBahias;
-  double capacidadAlmacenamiento;
-  String tipoRed;
+  double capacidadAlmacenamientoTB; // en Terabytes
+  String tipoRed; // Ethernet, Fibra, etc.
 
   Servidor({
     required int id,
@@ -11,7 +12,7 @@ class Servidor extends Dispositivo {
     required String modelo,
     required int anioFabricacion,
     required this.numeroBahias,
-    required this.capacidadAlmacenamiento,
+    required this.capacidadAlmacenamientoTB,
     required this.tipoRed,
   }) : super(
          id: id,
@@ -20,25 +21,15 @@ class Servidor extends Dispositivo {
          anioFabricacion: anioFabricacion,
        );
 
-  @override
-  String toString() {
-    return '${super.toString()}, Número de Bahías: $numeroBahias, Capacidad de Almacenamiento: ${capacidadAlmacenamiento}TB, Tipo de Red: $tipoRed';
+  void actualizarLibrerias() {
+    print('Conectando al repositorio central mediante $tipoRed...');
+    print('Verificando integridad de $numeroBahias bahías de disco...');
+    print('Actualizando librerías del sistema... [||||||||||] 100%');
+    print('Servidor actualizado.');
   }
 
-  void actualizarLibrerias() {
-    print('Actualizando librerías del servidor...');
-
-    // COMPROBAR SI LA RED ES ADECUADA
-    if (tipoRed.toLowerCase().contains('ethernet') ||
-        tipoRed.toLowerCase().contains('fibra')) {
-      print('Red estable detectada: $tipoRed');
-      print('Descargando librerías...');
-      print('Instalando actualizaciones...');
-      print('Librerías actualizadas correctamente.');
-    } else {
-      print(
-        'Red $tipoRed no recomendada para actualizar. Verifica la conexión.',
-      );
-    }
+  @override
+  String toString() {
+    return '${super.toString()} | Bahías: $numeroBahias | Almacenamiento: ${capacidadAlmacenamientoTB}TB | Red: $tipoRed';
   }
 }

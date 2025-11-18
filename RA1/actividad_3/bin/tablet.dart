@@ -1,9 +1,10 @@
 import 'dispositivo.dart';
+import 'mixin/conectividadWifi.dart';
+import 'mixin/vibración.dart';
 
-class Tablet extends Dispositivo {
+class Tablet extends Dispositivo with ConectividadWifi, Vibrar {
   double tamanioPantalla;
-  bool camara;
-  String sistemaOperativo;
+  bool tieneCamara;
 
   Tablet({
     required int id,
@@ -11,8 +12,7 @@ class Tablet extends Dispositivo {
     required String modelo,
     required int anioFabricacion,
     required this.tamanioPantalla,
-    required this.camara,
-    required this.sistemaOperativo,
+    this.tieneCamara = true,
   }) : super(
          id: id,
          marca: marca,
@@ -20,22 +20,15 @@ class Tablet extends Dispositivo {
          anioFabricacion: anioFabricacion,
        );
 
-  @override
-  String toString() {
-    final lteStr = camara ? 'Sí' : 'No';
-    return '${super.toString()}, Tamaño Pantalla: ${tamanioPantalla} pulgadas, LTE: $lteStr, Sistema Operativo: $sistemaOperativo';
+  void modoNoche() {
+    print(
+      'Activando modo noche en la pantalla de $tamanioPantalla pulgadas...',
+    );
+    print('Brillo reducido y filtro de luz azul activado.');
   }
 
-  void modoNoche() {
-    print('🌙 Activando modo noche...');
-
-    // VERIFICAR SISTEMA OPERATIVO SOPORTA MODO NOCHE
-    if (sistemaOperativo.toLowerCase().contains('android') ||
-        sistemaOperativo.toLowerCase().contains('ios')) {
-      print('Modo noche activado en $sistemaOperativo.');
-      print('Brillo reducido y colores cálidos aplicados.');
-    } else {
-      print('Modo noche no disponible en $sistemaOperativo.');
-    }
+  @override
+  String toString() {
+    return '${super.toString()} | Pantalla: $tamanioPantalla" | Cámara: ${tieneCamara ? "Sí" : "No"}';
   }
 }

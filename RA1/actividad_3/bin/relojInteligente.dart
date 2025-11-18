@@ -1,18 +1,18 @@
 import 'dispositivo.dart';
+import 'mixin/vibración.dart';
+import 'mixin/Sincronizacion.dart';
 
-class RelojInteligente extends Dispositivo {
-  bool GPS;
-  double tamanioPantalla;
+class RelojInteligente extends Dispositivo with Vibrar, SincronizacionNube {
   String tipoCorrea;
+  bool tieneGPS;
 
   RelojInteligente({
     required int id,
     required String marca,
     required String modelo,
     required int anioFabricacion,
-    required this.GPS,
-    required this.tamanioPantalla,
     required this.tipoCorrea,
+    this.tieneGPS = false,
   }) : super(
          id: id,
          marca: marca,
@@ -20,30 +20,14 @@ class RelojInteligente extends Dispositivo {
          anioFabricacion: anioFabricacion,
        );
 
-  @override
-  String toString() {
-    final gpsStr = GPS ? 'Sí' : 'No';
-    return '${super.toString()}, GPS: $gpsStr, Tamaño Pantalla: ${tamanioPantalla} pulgadas, Tipo Correa: $tipoCorrea';
+  void mostrarNotificaciones() {
+    activarVibracion("Nueva notificación recibida");
+    print('Notificación: Tienes un nuevo correo de Stucom.');
+    print('Notificación: Meta de pasos alcanzada.');
   }
 
-  void mostrarNotificaciones() {
-    print(
-      '📲 Mostrando notificaciones en pantalla de $tamanioPantalla pulgadas...',
-    );
-
-    // LISTA DE NOTIFICACIONES SIMULADAS
-    List<String> notificaciones = [
-      'Email nuevo de claseDAM@centro.edu',
-      'Evento: Examen de Programación mañana a las 9:00',
-      'Mensaje de Juan: "¿Has hecho el ejercicio 3?"',
-      'Actualización disponible del sistema',
-    ];
-
-    // MOSTRAR CADA NOTIFICACIÓN
-    for (String noti in notificaciones) {
-      print(noti);
-    }
-
-    print('Fin de las notificaciones.');
+  @override
+  String toString() {
+    return '${super.toString()} | Correa: $tipoCorrea | GPS: ${tieneGPS ? "Sí" : "No"}';
   }
 }
