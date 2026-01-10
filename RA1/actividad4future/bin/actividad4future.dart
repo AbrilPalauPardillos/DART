@@ -1,29 +1,23 @@
 import 'dart:async';
-
 import 'package:actividad4future/planet.dart';
 import 'package:actividad4future/services.dart';
 
-//Clase principal como asíncrona
 Future<void> main(List<String> arguments) async {
-  // Listado de planetas
-  List<Planet> planetList = [];
-
-  //Petición mediante un servicio
   Services service = Services();
 
+  print("Cargando datos de Star Wars API...\n");
 
-//Activaria una animación
-
-  service.getStarWarsPlanets().then((response) {
-    planetList = response;
-
-    //Tratamiento de datos de forma individual
-    for (Planet item in planetList) {
+  await service.getStarWarsPlanets().then((response) {
+    print("--- Apartado A: Listado de Planetas ---");
+    for (Planet item in response) {
       print(
-          "El planeta ${item.getName()} tiene ${item.getDiameter()}Kms de diametro y gravedad: ${item.getGravity()}");
+          "Planeta: ${item.getName()} | Ø: ${item.getDiameter()} | Gravedad: ${item.getGravity()} | Clima: ${item.getClimate()} | Terreno: ${item.getTerrain()}");
     }
-
-    //Desactivaría la animación.
   });
 
+  await service.getHabitantesPlaneta("1");
+
+  await service.getInfoHomeworld("1");
+
+  await service.getPeliDeVehiculo("4");
 }
